@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exchange DZCoin - Compra la tua criptovaluta</title>
+<style>
+  /* Reset base */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .exchange-container {
+    background: #1f1f1f;
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    color: #4bb543;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    color: #ccc;
+    text-align: left;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    background: #2a2a2a;
+    color: #eee;
+    transition: box-shadow 0.3s ease;
+  }
+
+  input[type="number"]:focus {
+    box-shadow: 0 0 10px #4bb543;
+  }
+
+  .price-info {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #bbb;
+  }
+
+  #total {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 25px 0;
+    color: #4bb543;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    background: #4bb543;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #121212;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(75, 181, 67, 0.6);
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background: #3a9235;
+  }
+
+  @media (max-width: 480px) {
+    .exchange-container {
+      padding: 25px 20px;
+    }
+
+    input[type="number"], button {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="exchange-container">
+  <h1>Compra DZCoin</h1>
+
+  <label for="quantity">Inserisci quantità DZC</label>
+  <input type="number" id="quantity" min="1" value="1" />
+
+  <p class="price-info">Prezzo unitario: <strong id="unit-price">5.00</strong> USD</p>
+
+  <p id="total">Totale: 5.00 USD</p>
+
+  <button id="buy-btn">Acquista con PayPal</button>
+</div>
+
+<script>
+  const unitPrice = 5.00; // Prezzo fisso per esempio
+  const quantityInput = document.getElementById('quantity');
+  const totalElem = document.getElementById('total');
+  const buyBtn = document.getElementById('buy-btn');
+
+  function updateTotal() {
+    const qty = parseInt(quantityInput.value) || 0;
+    const total = qty * unitPrice;
+    totalElem.textContent = `Totale: ${total.toFixed(2)} USD`;
+  }
+
+  quantityInput.addEventListener('input', updateTotal);
+
+  buyBtn.addEventListener('click', () => {
+    const qty = parseInt(quantityInput.value);
+    if (!qty || qty < 1) {
+      alert('Per favore, inserisci una quantità valida di DZCoin.');
+      return;
+    }
+    // Qui in futuro collegheremo PayPal e backend
+    alert(`Simulazione acquisto:\n${qty} DZC per un totale di ${ (qty * unitPrice).toFixed(2) } USD.`);
+  });
+
+  updateTotal();
+</script>
+
+</body>
+</html>
