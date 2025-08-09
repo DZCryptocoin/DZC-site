@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mia Crypto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { padding-top: 60px; }
+    .navbar { background-color: #222; }
+    .navbar a { color: white !important; }
+    footer { background: #222; color: #fff; padding: 10px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">MyCrypto</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="menu" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#grafico" class="nav-link">Grafico</a></li>
+        <li class="nav-item"><a href="#exchange" class="nav-link">Exchange</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Sezione Grafico -->
+<section id="grafico" class="container my-5">
+  <h2 class="text-center">Andamento della Mia Crypto</h2>
+  <canvas id="priceChart" height="100"></canvas>
+</section>
+
+<!-- Sezione Exchange -->
+<section id="exchange" class="container my-5">
+  <h2 class="text-center">Exchange</h2>
+  <form class="row g-3">
+    <div class="col-md-4">
+      <label for="action" class="form-label">Azione</label>
+      <select id="action" class="form-select">
+        <option>Compra</option>
+        <option>Vendi</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="amount" class="form-label">Quantità</label>
+      <input type="number" id="amount" class="form-control" min="1" />
+    </div>
+    <div class="col-md-4">
+      <label for="price" class="form-label">Prezzo unitario (€)</label>
+      <input type="text" id="price" class="form-control" readonly value="0.50" />
+    </div>
+    <div class="col-12 text-center">
+      <button type="button" class="btn btn-success">Conferma</button>
+    </div>
+  </form>
+</section>
+
+<!-- Sezione About -->
+<section id="about" class="container my-5">
+  <h2 class="text-center">Chi Siamo</h2>
+  <p class="text-center">
+    MyCrypto è un progetto innovativo che utilizza una tecnologia alternativa alla blockchain.
+    Il nostro obiettivo è creare un ecosistema sicuro, veloce e scalabile.
+  </p>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2025 MyCrypto - Tutti i diritti riservati
+</footer>
+
+<!-- Script -->
+<script>
+  // Grafico
+  const ctx = document.getElementById('priceChart');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+      datasets: [{
+        label: 'Prezzo (€)',
+        data: [0.45, 0.47, 0.48, 0.50, 0.49, 0.52, 0.53],
+        borderColor: '#00ff88',
+        backgroundColor: 'rgba(0,255,136,0.2)',
+        fill: true
+      }]
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
